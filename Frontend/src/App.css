@@ -1,0 +1,24 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+.background-image {
+    background-image: url('./Imgs/bg.jpg');
+    background-size: cover;
+  }
+  
+
+  .font-container {
+    
+      font-family: "Lora", serif;
+      font-optical-sizing: auto;
+      font-weight: 200;
+      font-style: normal;
+    
+  }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+  
