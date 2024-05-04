@@ -1,6 +1,7 @@
 // common.js
 const { Router } = require('express');
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const router = Router();
 const User = require('../Model/userModel');
 
@@ -40,7 +41,22 @@ async function register(req, res) {
 
 // POST: User login
 async function login(req, res) {
-    // Implement login logic
+    const {username , password} = req.body;
+    try{
+
+        const user = userModel.findOne({username});
+        if(!user){
+            return res.status(404).send({error: "Username Not found"});  
+        }
+
+        const isMatch = await bcrypt.compair(password , user.password);
+        if(!isMatch){
+            return res.status(400).send({error: "Please Enter Correct Password"});
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send({ error: "Internal server error" });
+    }
 }
 
 // GET: Retrieve user by username
