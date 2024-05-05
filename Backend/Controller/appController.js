@@ -7,38 +7,67 @@ const User = require('../Model/userModel');
 const JWT_Token = require('./JWT.js');
 const userModel = require('../Model/userModel');
 const ProfileSchema = require('../Model/profileModel.js')
+const nodemailer = require('nodemailer')
+const mailgen = require('mailgen')
+const {EMAIL , PASSWORD} = require("./mail.js")
 
 // POST: Register a new user
 async function register(req, res) {
-   try {
+    try {
         const { username, password, email } = req.body;
-        
+
         // Check if the username already exists
         const existingUser = await User.findOne({ username });
         if (existingUser) {
             return res.status(400).json({ error: "Please use a unique username" });
         }
-        
+
         // Check if the email already exists
         const existingEmail = await User.findOne({ email });
         if (existingEmail) {
             return res.status(400).json({ error: "Please use a unique email" });
         }
-        
+
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 8);
-        
+
         // Create a new user with the hashed password
         const newUser = new User({ username, password: hashedPassword, email });
-        await newUser.save()
-        .then(result => res.status(201).send({msg: "New User"}))
-        .catch(err =>res.status(500).send(err))
+        await newUser.save();
 
-   } catch (error) {
+        // Send registration email
+        let transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: EMAIL,
+                pass: PASSWORD
+            }
+        });
+
+        let mailOptions = {
+            from: EMAIL,
+            to: email,
+            subject: 'Welcome to LearnNleap!',
+            text: `Hi ${username},\n\nThank you for registering with LearnNleap! We're excited to have you on board.`
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.error(error);
+                return res.status(500).send({ error: "Failed to send registration email" });
+            } else {
+                console.log('Email sent: ' + info.response);
+                return res.status(201).send({ msg: "New user registered and email sent" });
+            }
+        });
+
+    } catch (error) {
         console.error(error);
-        res.status(500).send("Internal Server Error");
-   }
+        return res.status(500).send("Internal Server Error");
+    }
 }
+
+
 
 //Middleware yp varify user 
 
@@ -142,12 +171,8 @@ async function getUser(req, res) {
 }
 
 
-
-
-
 // GET: Retrieve user by firstname
-async function getFirstname(req, res) {
-    // Implement logic to retrieve user by firstname
+async function getFirstname(req, res) { 
 }
 
 // PUT: Update user profile
