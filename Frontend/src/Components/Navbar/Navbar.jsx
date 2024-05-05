@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import Searchbar from './Searchbar';
 import { IoIosBusiness } from "react-icons/io";
+import ForBusiness from './ForBusinessOnClick'; // Ensure this is the default export if it's a component
 
 const Navbar = () => {
+  const [showForBusiness, setShowForBusiness] = useState(false);
+
   const navItems = [
     { to: '/learn', text: 'Learn' },
     { to: '/practice', text: 'Practice' },
@@ -12,6 +15,10 @@ const Navbar = () => {
     { to: '/compete', text: 'Compete' },
     { to: '/jobs', text: 'Jobs' },
   ];
+
+  const toggleForBusinessModal = () => {
+    setShowForBusiness(!showForBusiness);
+  };
 
   return (
     <nav className="bg-white shadow-md">
@@ -36,20 +43,17 @@ const Navbar = () => {
               </li>
             ))}
             <div className="hidden md:flex items-center space-x-4">
-              <Link
-                to="/login"
-                className="text-gray-700 font-medium hover:text-blue-500 transition duration-300 px-3 py-2 rounded-md"
-              >
+              <Link to="/login" className="text-gray-700 font-medium hover:text-blue-500 transition duration-300 px-3 py-2 rounded-md">
                 Login
               </Link>
-              <Link>
               <button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-300">
                 Join us
               </button>
-              </Link>
-              <button className="bg-yellow-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-300 transition duration-300 flex border-1 border-yellow-100 " 
+              <button
+                className="bg-yellow-600 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-700 transition duration-300 flex items-center"
+                onClick={toggleForBusinessModal}
               >
-                <IoIosBusiness className='flex mt-1 '/>
+                <IoIosBusiness className='mr-2'/>
                 For Business
               </button>
             </div>
@@ -60,6 +64,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      {showForBusiness && <ForBusiness />}
     </nav>
   );
 };

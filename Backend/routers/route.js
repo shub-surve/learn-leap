@@ -7,8 +7,10 @@ const { register,
     updateUser,
     generateOTP,
     verifyOTP,
-    resetPass} = require('../Controller/appController')
-
+    verifyUser,
+    resetPass,
+    createProfile} = require('../Controller/appController')
+const app = express();
 
 
 {/*==== LOGIN ROUTES ====*/}
@@ -16,11 +18,11 @@ const { register,
 router.route('/register').post(register)
 router.route('registerMail').post(); //send register male
 router.route('/authenticate').post(); //authenticate user
-router.route('/login').post(login); //login in app
-
+router.route('/login').post(verifyUser, login); //login in app
+router.route('/profile').post(createProfile)
 // Get Methods
 router.route('/user/:firstname').get(getFirstname);//get first name of user
-router.route('/user/:username').get(getUser); //get username of the user
+router.route('/:username').get(getUser) //get username of the user
 router.route('/generateOTP').get(generateOTP); //generate otp for password change
 router.route('/verifyOTP').get(verifyOTP);// verify otp
 
