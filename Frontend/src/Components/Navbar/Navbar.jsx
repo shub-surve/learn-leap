@@ -27,7 +27,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img className="h-12 mr-4" src="./Imgs/logo.png" alt="Logo" />
-            <span className="text-gray-700 font-semibold text-lg">unstop</span>
+            <span className="text-gray-700 font-semibold text-lg">learnNleap</span>
           </div>
           <Searchbar />
           {/* Navigation Links */}

@@ -36,7 +36,7 @@ const registerMail = (req , res) => {
         }
     }
     let mail = MailGenerator.generate(response)
-
+    const userMAil = 
     let message = {
         from : EMAIL, 
         to : 

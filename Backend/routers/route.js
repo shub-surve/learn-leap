@@ -1,38 +1,23 @@
 const express = require("express");
 const router = express.Router();
-const { register,
-    login,
-    getUser,
-    getFirstname,
-    updateUser,
-    generateOTP,
-    verifyOTP,
-    verifyUser,
-    resetPass,
-    createProfile} = require('../Controller/appController')
-const app = express();
+const { register, login, getUser, getFirstname, updateUser, generateOTP, verifyOTP, verifyUser, resetPass, createProfile } = require('../Controller/appController');
+const { authenticateUser } = require('../Controller/Middleware/Auth.js');
 
+// POST methods for login
+router.post('/register', register);
+router.post('/registerMail', (req, res) => res.end()); // send register mail
+router.post('/authenticate', verifyUser, (req, res) => res.end()); // authenticate user
+router.post('/login', verifyUser, login); // login in app
+router.post('/profile', createProfile); // create user profile
 
-{/*==== LOGIN ROUTES ====*/}
-//POST methods for login  
-router.route('/register').post(register)
-router.route('registerMail').post(); //send register male
-router.route('/authenticate').post(); //authenticate user
-router.route('/login').post(verifyUser, login); //login in app
-router.route('/profile').post(createProfile)
 // Get Methods
-router.route('/user/:firstname').get(getFirstname);//get first name of user
-router.route('/:username').get(getUser) //get username of the user
-router.route('/generateOTP').get(generateOTP); //generate otp for password change
-router.route('/verifyOTP').get(verifyOTP);// verify otp
+router.get('/user/:firstname', getFirstname); // get first name of user
+router.get('/:username', getUser); // get username of the user
+router.get('/generateOTP', generateOTP); // generate otp for password change
+router.get('/verifyOTP', verifyOTP); // verify otp
 
+// PUT methods
+router.put('/Profile-update/', updateUser); // update profile details
+router.put('/resetPass', resetPass); // update password
 
-//PUT methods
-router.route('/Profile-update').put(updateUser) //update profile details
-router.route('/resetPass').put(resetPass); //update password
-
-
-
-
-// Export the router
 module.exports = router;

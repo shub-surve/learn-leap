@@ -176,9 +176,54 @@ async function getFirstname(req, res) {
 }
 
 // PUT: Update user profile
+
+
+// Assuming your profile model is named Profile
+
 async function updateUser(req, res) {
-    // Implement logic to update user profile
+    try {
+        const { userId } = req.user; // Assuming you have userId in the request after authentication
+        const { firstName, lastName, dateOfBirth, mobileNumber, location, collegeName, courseName, profilePicture } = req.body;
+
+        // Check if the user has an existing profile
+        let profile = await Profile.findOne({ userId });
+
+        if (!profile) {
+            // If the user does not have an existing profile, create a new one
+            profile = new Profile({
+                userId,
+                firstName,
+                lastName,
+                dateOfBirth,
+                mobileNumber,
+                location,
+                collegeName,
+                courseName,
+                profilePicture
+            });
+        } else {
+            // If the user already has a profile, update it with the new data
+            profile.firstName = firstName;
+            profile.lastName = lastName;
+            profile.dateOfBirth = dateOfBirth;
+            profile.mobileNumber = mobileNumber;
+            profile.location = location;
+            profile.collegeName = collegeName;
+            profile.courseName = courseName;
+            profile.profilePicture = profilePicture;
+        }
+
+        // Save the updated profile
+        await profile.save();
+
+        return res.status(200).send({ msg: "Profile updated successfully", profile });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send({ error: "Internal Server Error" });
+    }
 }
+
+
 
 // POST: Generate OTP for user
 async function generateOTP(req, res) {
