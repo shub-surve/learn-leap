@@ -1,34 +1,39 @@
+// Profile.js
 const mongoose = require('mongoose');
+const userId = require('../Controller/appController.js');
 
 
 const ProfileSchema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        required: true
-      },
-      lastName: {
-        type: String,
-        required: true
-      },
-      dateOfBirth: {
-        type: Date
-      },
-      mobileNumber: {
-        type: String
-      },
-      location: {
-        type: String
-      },
-      collegeName: {
-        type: String
-      },
-      courseName: {
-        type: String
-      },
-      profilePicture: {
-        type: String 
-      }
-})
- 
+  userId: { 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'User' // Assuming userId will be set elsewhere
+  },
+  firstName: {
+      type: String,
+      required: true
+  },
+  lastName: {
+      type: String,
+      required: true
+  },
+  dateOfBirth: {
+      type: String
+  },
+  mobileNumber: {
+      type: String
+  },
+  location: {
+      type: String
+  },
+  collegeName: {
+      type: String
+  },
+  courseName: {
+      type: String
+  },
+  profilePicture: {
+      type: String 
+  }
+});
 
-module.exports = mongoose.model('Profile' , ProfileSchema)
+module.exports = mongoose.model('Profile', ProfileSchema);

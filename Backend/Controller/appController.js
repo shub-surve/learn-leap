@@ -71,13 +71,21 @@ async function register(req, res) {
 
 //Middleware yp varify user 
 
-async function verifyUser(req , res, next) { 
-    const {username} = req.method === "GET" ? req.query : req.body;
+async function verifyUser(req, res, next) {
+    let exist;
+    if (req.method === "GET") {
+        const { username, _id } = req.query;
+        exist = await userModel.findOne({ $or: [{ username }, { _id }] });
+    } else {
+        const { username, _id } = req.body;
+        exist = await userModel.findOne({ $or: [{ username }, { _id }] });
+        console.log(_id);
+    }
+    if (!exist) return res.status(404).send({ error: "User not found" });
     
-    let exist = await userModel.findOne({username});
-    if(!exist) return res.status(404).send({error : "Username not found"});
-    next(); 
+    next();
 }
+
 
 // POST: User login
 async function login(req, res) {
@@ -114,7 +122,7 @@ async function login(req, res) {
 }
 
 
-
+let userId;
 // GET: Retrieve user by username
 async function getUser(req, res) {
     const { username } = req.params;
@@ -135,8 +143,11 @@ async function getUser(req, res) {
         console.log('User not found'); // Log if user not found
         return res.status(404).send({ error: "User not found" });
       }
+       userId = user._id;
+      console.log(userId);
   
-      console.log('User found:', user); // Log the found user
+      console.log('User found:', user);
+     // Log the found user
       return res.status(200).send({ user });
     } catch (error) {
       console.error('Error:', error); // Log any errors
@@ -150,7 +161,11 @@ async function getUser(req, res) {
      
 
     try {
+        if (!userId) {
+            return res.status(400).send({ error: "User not found" });
+        }
         const profile = new ProfileSchema({
+           userId : userId,
             firstName,
             lastName,
             dateOfBirth,
@@ -171,9 +186,29 @@ async function getUser(req, res) {
 }
 
 
-// GET: Retrieve user by firstname
-async function getFirstname(req, res) { 
+// GET: Profile
+// GET: Profile
+async function getProfile(req, res) {
+    try {
+        // Extract the userId from the request parameters or wherever it's stored in the request
+        const { userId } = req.params;
+
+        // Query the database to find the profile associated with the userId
+        const profile = await ProfileSchema.findOne({ userId });
+
+        // Check if the profile exists
+        if (!profile) {
+            return res.status(404).send({ error: "Profile not found" });
+        }
+
+        // Return the profile data if found
+        return res.status(200).send({ profile });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send({ error: "Internal Server Error" });
+    }
 }
+
 
 // PUT: Update user profile
 
@@ -181,46 +216,20 @@ async function getFirstname(req, res) {
 // Assuming your profile model is named Profile
 
 async function updateUser(req, res) {
-    try {
-        const { userId } = req.user; // Assuming you have userId in the request after authentication
-        const { firstName, lastName, dateOfBirth, mobileNumber, location, collegeName, courseName, profilePicture } = req.body;
+   try {
+    const id = req.query.id;
 
-        // Check if the user has an existing profile
-        let profile = await Profile.findOne({ userId });
-
-        if (!profile) {
-            // If the user does not have an existing profile, create a new one
-            profile = new Profile({
-                userId,
-                firstName,
-                lastName,
-                dateOfBirth,
-                mobileNumber,
-                location,
-                collegeName,
-                courseName,
-                profilePicture
-            });
-        } else {
-            // If the user already has a profile, update it with the new data
-            profile.firstName = firstName;
-            profile.lastName = lastName;
-            profile.dateOfBirth = dateOfBirth;
-            profile.mobileNumber = mobileNumber;
-            profile.location = location;
-            profile.collegeName = collegeName;
-            profile.courseName = courseName;
-            profile.profilePicture = profilePicture;
-        }
-
-        // Save the updated profile
-        await profile.save();
-
-        return res.status(200).send({ msg: "Profile updated successfully", profile });
-    } catch (error) {
-        console.error(error);
-        return res.status(500).send({ error: "Internal Server Error" });
+    if(id){
+        const body = req.body;
+        
+        userModel.updateOne({_id :id}, body , function(err , data){
+            if(err) throw err;
+            return res.status(201)/send("User updated...!")
+        })
     }
+   } catch (error) {
+    return res.status(500).send({error: "Internal Server Error"})
+   }
 }
 
 
@@ -245,11 +254,12 @@ module.exports = {
     register,
     login,
     getUser,
-    getFirstname,
+    getProfile,
     updateUser,
     generateOTP,
     verifyOTP,
     resetPass,
     verifyUser,
-    createProfile
+    createProfile,
+    userId
 };

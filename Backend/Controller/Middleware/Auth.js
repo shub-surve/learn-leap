@@ -5,7 +5,7 @@ const { JWT_SECRET } = require('../config.js'); // Assuming you have a JWT secre
 function authenticateUser(req, res, next) {
     // Check if the authorization header is present in the request
     const authHeader = req.headers['authorization'];
-f
+
     if (!authHeader) {
         return res.status(401).send({ error: 'Unauthorized' });
     }
