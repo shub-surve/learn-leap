@@ -9,7 +9,7 @@ const MentorCard = () => {
   return (
     <>
     <Navbar></Navbar>
-    <div className="flex flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center background-image">
       {mentors.map((mentor, index) => (
         <div key={index} className="max-w-xs rounded overflow-hidden shadow-lg bg-white m-2 hover:shadow-xl transition duration-300">
           <img className="w-full h-32 object-cover" src={mentor.image} alt="Mentor" />

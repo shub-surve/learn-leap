@@ -11,7 +11,7 @@ const Navbar = () => {
   const navItems = [
     { to: '/learn', text: 'Learn' },
     { to: '/practice', text: 'Practice' },
-    { to: '/mentorship', text: 'Mentorship' },
+    { to: '/mentors', text: 'Mentorship' },
     { to: '/compete', text: 'Compete' },
     { to: '/jobs', text: 'Jobs' },
   ];
