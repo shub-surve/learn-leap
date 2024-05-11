@@ -10,6 +10,7 @@ import Register from './Components/Login/Register'
 import Recovery from './Components/Login/Recovery'
 import FAQPage from './Components/Navbar/FAQ'
 import Profile from './Components/HomePage/Profile'
+import MentorCard from './Components/Mentors/MentorsCard'
 
 
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: '/FAQ',
     element: <FAQPage/>
+  },
+  {
+    path : '/mentors',
+    element: <MentorCard/>
   }
 ])
 

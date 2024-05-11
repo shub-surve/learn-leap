@@ -1,0 +1,75 @@
+[
+    {
+      "image": "./imgs/mentor2.png",
+      "name": "Dr. Emily Smith",
+      "title": "Ph.D. in Computer Science",
+      "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
+    },
+    {
+      "image": "./imgs/mentor3.png",
+      "name": "John Doe",
+      "title": "M.Sc. in Mathematics",
+      "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
+    },
+    {
+        "image": "./imgs/mentor2.png",
+        "name": "Dr. Emily Smith",
+        "title": "Ph.D. in Computer Science",
+        "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
+      },
+      {
+        "image": "./imgs/mentor3.png",
+        "name": "John Doe",
+        "title": "M.Sc. in Mathematics",
+        "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
+      },
+      {
+        "image": "./imgs/mentor2.png",
+        "name": "Dr. Emily Smith",
+        "title": "Ph.D. in Computer Science",
+        "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
+      },
+      {
+        "image": "./imgs/mentor3.png",
+        "name": "John Doe",
+        "title": "M.Sc. in Mathematics",
+        "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
+      },
+      {
+        "image": "./imgs/mentor2.png",
+        "name": "Dr. Emily Smith",
+        "title": "Ph.D. in Computer Science",
+        "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
+      },
+      {
+        "image": "./imgs/mentor3.png",
+        "name": "John Doe",
+        "title": "M.Sc. in Mathematics",
+        "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
+      },
+      {
+        "image": "./imgs/mentor2.png",
+        "name": "Dr. Emily Smith",
+        "title": "Ph.D. in Computer Science",
+        "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
+      },
+      {
+        "image": "./imgs/mentor3.png",
+        "name": "John Doe",
+        "title": "M.Sc. in Mathematics",
+        "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
+      },
+      {
+        "image": "./imgs/mentor2.png",
+        "name": "Dr. Emily Smith",
+        "title": "Ph.D. in Computer Science",
+        "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
+      },
+      {
+        "image": "./imgs/mentor3.png",
+        "name": "John Doe",
+        "title": "M.Sc. in Mathematics",
+        "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
+      }
+
+  ]

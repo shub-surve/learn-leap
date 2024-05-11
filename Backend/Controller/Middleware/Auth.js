@@ -1,6 +1,6 @@
 // authenticationMiddleware.js
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../config.js'); // Assuming you have a JWT secret stored in a config file
+const JWT_SECRET = require('../JWT.js')// Assuming you have a JWT secret stored in a config file
 
 function authenticateUser(req, res, next) {
     // Check if the authorization header is present in the request
