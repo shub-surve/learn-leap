@@ -1,75 +1,38 @@
 [
     {
+      "id": 1,
+      "image": "./imgs/mentor1.png",
+      "name": "Sarah Johnson",
+      "title": "Software Engineer",
+      "description": "Sarah Johnson is a software engineer with 8 years of experience in tech companies. She specializes in backend development and has worked on various projects related to database management systems and cloud computing."
+    },
+    {
+      "id": 2,
       "image": "./imgs/mentor2.png",
-      "name": "Dr. Emily Smith",
-      "title": "Ph.D. in Computer Science",
-      "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
+      "name": "Michael Chen",
+      "title": "Data Scientist",
+      "description": "Michael Chen is a data scientist working in a leading tech company. He has a strong background in machine learning and data analytics, with experience in building predictive models and analyzing large datasets."
     },
     {
+      "id": 3,
       "image": "./imgs/mentor3.png",
-      "name": "John Doe",
-      "title": "M.Sc. in Mathematics",
-      "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
+      "name": "Emily Rodriguez",
+      "title": "UX Designer",
+      "description": "Emily Rodriguez is a UX designer specializing in user research and interface design. She has worked on multiple projects for web and mobile applications, focusing on creating intuitive and engaging user experiences."
     },
     {
-        "image": "./imgs/mentor2.png",
-        "name": "Dr. Emily Smith",
-        "title": "Ph.D. in Computer Science",
-        "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
-      },
-      {
-        "image": "./imgs/mentor3.png",
-        "name": "John Doe",
-        "title": "M.Sc. in Mathematics",
-        "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
-      },
-      {
-        "image": "./imgs/mentor2.png",
-        "name": "Dr. Emily Smith",
-        "title": "Ph.D. in Computer Science",
-        "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
-      },
-      {
-        "image": "./imgs/mentor3.png",
-        "name": "John Doe",
-        "title": "M.Sc. in Mathematics",
-        "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
-      },
-      {
-        "image": "./imgs/mentor2.png",
-        "name": "Dr. Emily Smith",
-        "title": "Ph.D. in Computer Science",
-        "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
-      },
-      {
-        "image": "./imgs/mentor3.png",
-        "name": "John Doe",
-        "title": "M.Sc. in Mathematics",
-        "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
-      },
-      {
-        "image": "./imgs/mentor2.png",
-        "name": "Dr. Emily Smith",
-        "title": "Ph.D. in Computer Science",
-        "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
-      },
-      {
-        "image": "./imgs/mentor3.png",
-        "name": "John Doe",
-        "title": "M.Sc. in Mathematics",
-        "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
-      },
-      {
-        "image": "./imgs/mentor2.png",
-        "name": "Dr. Emily Smith",
-        "title": "Ph.D. in Computer Science",
-        "description": "Dr. Emily Smith is a passionate educator with over 10 years of experience in teaching computer science. Her research interests include artificial intelligence and machine learning. She is dedicated to helping students develop practical skills and a deep understanding of computer science concepts."
-      },
-      {
-        "image": "./imgs/mentor3.png",
-        "name": "John Doe",
-        "title": "M.Sc. in Mathematics",
-        "description": "John Doe has a master's degree in mathematics and has been teaching mathematics for 5 years. He specializes in calculus and algebra and loves making complex mathematical concepts easy to understand for his students."
-      }
-
+      "id": 4,
+      "image": "./imgs/mentor4.png",
+      "name": "David Kim",
+      "title": "Product Manager",
+      "description": "David Kim is a product manager at a prominent tech company. He has extensive experience in product development and strategy, having led successful product launches and managed cross-functional teams."
+    },
+    {
+      "id": 5,
+      "image": "./imgs/mentor5.png",
+      "name": "Jennifer Lee",
+      "title": "Software Architect",
+      "description": "Jennifer Lee is a software architect with a specialization in cloud computing and microservices architecture. She has designed scalable and resilient systems for high-traffic web applications."
+    }
   ]
+  
