@@ -1,12 +1,12 @@
 // Profile.js
 const mongoose = require('mongoose');
-const userId = require('../Controller/appController.js');
+
 
 
 const ProfileSchema = new mongoose.Schema({
   userId: { 
       type: mongoose.Schema.Types.ObjectId, 
-      ref: 'User' // Assuming userId will be set elsewhere
+     
   },
   firstName: {
       type: String,

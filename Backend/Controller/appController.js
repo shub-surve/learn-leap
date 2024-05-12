@@ -6,7 +6,8 @@ const router = Router();
 const User = require('../Model/userModel');
 const JWT_Token = require('./JWT.js');
 const userModel = require('../Model/userModel');
-const ProfileSchema = require('../Model/profileModel.js')
+const ProfileSchema = require("../Model/profileModel")
+
 const nodemailer = require('nodemailer')
 const mailgen = require('mailgen')
 const {EMAIL , PASSWORD} = require("./mail.js")
@@ -14,7 +15,7 @@ const {EMAIL , PASSWORD} = require("./mail.js")
 // POST: Register a new user
 async function register(req, res) {
     try {
-        const { username, password, email } = req.body;
+        const { username, password, email, firstName, lastName, mobileNumber } = req.body;
 
         // Check if the username already exists
         const existingUser = await User.findOne({ username });
@@ -30,11 +31,21 @@ async function register(req, res) {
 
         // Hash the password
         const hashedPassword = await bcrypt.hash(password, 8);
+        
+        const newUser = new User({ username, password: hashedPassword, email, firstName, lastName, mobileNumber });
+        const savedUser = await newUser.save();
 
-        // Create a new user with the hashed password
-        const newUser = new User({ username, password: hashedPassword, email });
-        await newUser.save();
+        // Create a new profile for the user
+        const newProfile = new ProfileSchema({
+            userId: savedUser._id,
+            firstName: savedUser.firstName,
+            lastName: savedUser.lastName,
+            mobileNumber: savedUser.mobileNumber
+        });
+        await newProfile.save();
 
+       
+      
         // Send registration email
         let transporter = nodemailer.createTransport({
             service: "gmail",
@@ -122,7 +133,7 @@ async function login(req, res) {
 }
 
 
-let userId;
+
 // GET: Retrieve user by username
 async function getUser(req, res) {
     const { username } = req.params;
@@ -157,7 +168,7 @@ async function getUser(req, res) {
 
   //POST: Profile post
   async function createProfile(req, res) {
-    const { firstName, lastName, dateOfBirth, mobileNumber, location, collegeName, courseName , profilePicture} = req.body;
+    const { userId , firstName, lastName, dateOfBirth, mobileNumber, location, collegeName, courseName , profilePicture} = req.body;
      
 
     try {
@@ -188,13 +199,14 @@ async function getUser(req, res) {
 
 // GET: Profile
 // GET: Profile
+// GET: Profile
 async function getProfile(req, res) {
     try {
         // Extract the userId from the request parameters or wherever it's stored in the request
         const { userId } = req.params;
 
         // Query the database to find the profile associated with the userId
-        const profile = await ProfileSchema.findOne({ userId });
+        const profile = await ProfileSchema.findOne({userId})
 
         // Check if the profile exists
         if (!profile) {
@@ -208,6 +220,7 @@ async function getProfile(req, res) {
         return res.status(500).send({ error: "Internal Server Error" });
     }
 }
+
 
 
 // PUT: Update user profile
@@ -260,6 +273,5 @@ module.exports = {
     verifyOTP,
     resetPass,
     verifyUser,
-    createProfile,
-    userId
+    createProfile
 };
