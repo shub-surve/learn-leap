@@ -1,11 +1,18 @@
-const mongoose = require('mongoose')
-const { MongoMemoryServer } = require( "mongodb-memory-server");
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
-async function connect() {
-    const mongod = await MongoMemoryServer.create();
-    const getUri = mongod.getUri();
-    const db = await mongoose.connect(getUri);
-    console.log("Database Connected");
-    return db;
+const uri = "mongodb+srv://learnnleap:bbpZTDhFplKUIfit@learnnleap.q46sad3.mongodb.net/?retryWrites=true&w=majority&appName=LearnNLeap";
+const client = new MongoClient(uri);
+
+async function dbConnect() {
+  try {
+    await client.connect();
+    await client.db("learnnleap").command({ ping: 1 });
+
+    console.log("Connected to MongoDB successfully!");
+  } catch (error) {
+    console.error("Failed to connect to the database:", error);
+    throw error;
+  }
 }
-module.exports= connect;
+
+module.exports = dbConnect;
